@@ -8,26 +8,42 @@ $(document).ready(function(){
 	});
 	$(window).resize(function(){
 		var wid = $(window).width();
-		if(wid > 760 && menu.is(':hidden')) {
+		if(wid > 1220 && menu.is(':hidden')) {
 			menu.removeAttr('style');
 		}
 	});
-// //fixed menu
-// 	var h_hght = 0; // отступ шапки от верха
-// 		var h_mrg = 0;	  // отступ когда шапка уже не видна
-// 		$(function(){
-// 			var elem = $('#masthead');
-// 			var top = $(this).scrollTop();
-// 			if(top > h_hght){
-// 				elem.css('top', h_mrg);
-// 			}
-// 			$(window).scroll(function(){
-// 				top = $(this).scrollTop();
-// 				if (top+h_mrg < h_hght) {
-// 					elem.css('top', (h_hght-top));
-// 				} else {
-// 					elem.css('top', h_mrg);
-// 				}
-// 			});
-// 		});
+
+
+	$('.partners-slider').slick({
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		autoplay: true,
+		arrows: false,
+		responsive: [
+		{
+			breakpoint: 1000,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				infinite: true,
+				dots: true
+			}
+		},
+		{
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
+		]
 	});
+});

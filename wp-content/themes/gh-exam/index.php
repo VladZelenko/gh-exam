@@ -11,25 +11,16 @@
  *
  * @package gh-exam
  */
-
 get_header(); ?>
-
+<div class="col-md-8 col-lg-8">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			<div class="row">
+				<?php
+				if ( have_posts() ) :
 
-		<?php
-		if ( have_posts() ) :
-
-			if ( is_home() && ! is_front_page() ) : ?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-
-			<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+					/* Start the Loop */
+				while ( have_posts() ) : the_post();
 
 				/*
 				 * Include the Post-Format-specific template for the content.
@@ -38,19 +29,33 @@ get_header(); ?>
 				 */
 				get_template_part( 'template-parts/content', get_post_format() );
 
-			endwhile;
+				endwhile;
 
-			the_posts_navigation();
+				the_posts_navigation();
 
-		else :
+				else :
 
-			get_template_part( 'template-parts/content', 'none' );
+					get_template_part( 'template-parts/content', 'none' );
 
-		endif; ?>
-
+				endif; ?>
+			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+	<?php
+	the_posts_pagination(
+		$args = array(
+			'show_all'     => false,
+			'end_size'     => 5,
+			'mid_size'     => 4,
+			'prev_next'    => false,
+			'prev_text'    => __(''),
+			'next_text'    => __(''),
+			'add_args'     => false,
+			'add_fragment' => '',
+			'screen_reader_text' => __( ' ' ),
+			));
+			?>
+		</div>
+		<?php
+		get_sidebar();
+		get_footer();

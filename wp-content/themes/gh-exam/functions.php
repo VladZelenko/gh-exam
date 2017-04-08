@@ -44,8 +44,8 @@ function gh_exam_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'gh-exam' ),
-	) );
+		'menu-1' => esc_html__( 'Header menu', 'gh-exam' ),
+   ) );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -57,13 +57,13 @@ function gh_exam_setup() {
 		'comment-list',
 		'gallery',
 		'caption',
-	) );
+   ) );
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'gh_exam_custom_background_args', array(
 		'default-color' => 'ffffff',
 		'default-image' => '',
-	) ) );
+   ) ) );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -100,26 +100,154 @@ function gh_exam_widgets_init() {
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
-	) );
+   ) );
 }
 add_action( 'widgets_init', 'gh_exam_widgets_init' );
 
-/**
- * Enqueue scripts and styles.
+add_action( 'init', 'slider_post_type' );
+//lenght paragraph posts
+function new_excerpt_length($length) {
+  return 60;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+
+//no ... on posts
+add_filter('excerpt_more', function($more) {
+  return '';
+});
+
+
+//clients slider
+function company_post_type() {
+	$args = array(
+    'label' => 'Company Slides',
+    'public' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'company-slider'),
+    'query_var' => true,
+    'supports' => array(
+     'title',
+     'editor',
+     'excerpt',
+     'trackbacks',
+     'custom-fields',
+     'comments',
+     'revisions',
+     'thumbnail',
+     'author',
+     'page-attributes',)
+    );
+	register_post_type( 'company-slider', $args );
+}
+add_action( 'init', 'company_post_type' );
+
+
+//hero home
+function preview_post_type() {
+	$args = array(
+    'label' => 'Home preview',
+    'public' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'hero-home'),
+    'query_var' => true,
+    'supports' => array(
+     'title',
+     'editor',
+     'excerpt',
+     'trackbacks',
+     'custom-fields',
+     'comments',
+     'revisions',
+     'thumbnail',
+     'author',
+     'page-attributes',)
+    );
+	register_post_type( 'hero-home', $args );
+}
+add_action( 'init', 'preview_post_type' );
+
+
+function welcome_post_type() {
+  $args = array(
+    'label' => 'Welcome section',
+    'public' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'welcome'),
+    'query_var' => true,
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+    );
+  register_post_type( 'welcome', $args );
+}
+add_action( 'init', 'welcome_post_type' );
+
+function service_post_type() {
+  $args = array(
+    'label' => 'Services section',
+    'public' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'services'),
+    'query_var' => true,
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+    );
+  register_post_type( 'services', $args );
+}
+add_action( 'init', 'service_post_type' );
+
+register_sidebar( array(
+  'name' => __( 'Contact widget area', 'blogname' ),
+  'id' => 'sidebar-contact-1',
+  'description' => __( 'Contact widget area', 'blogname' ),
+        'before_widget' => '<li id="%1$s">',
+        'after_widget' => '</li>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>',
+        ) );
+ /* Enqueue scripts and styles.
  */
-function gh_exam_scripts() {
-	wp_enqueue_style( 'gh-exam-style', get_stylesheet_uri() );
+ function gh_exam_scripts() {
+   wp_enqueue_style( 'gh-exam-style', get_stylesheet_uri() );
+   wp_enqueue_style( 'slick-style', get_stylesheet_uri() . '/libs/slick-carousel/slick/slick.css');
+   wp_enqueue_style( 'slick-carousel', get_stylesheet_uri() . 'libs/slick-carousel/slick/slick-theme.css');
 
-	wp_enqueue_script( 'jq', get_template_directory_uri() . '/libs/jquery/dist/jquery.min.js', array(), '20151215', true );
-	wp_enqueue_script( 'gh-exam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/libs/bootstrap-sass/assets/javascripts/bootstrap.min.js', array(), '20151215', true );
+   wp_enqueue_script( 'jq', get_template_directory_uri() . '/libs/jquery/dist/jquery.min.js', array(), '20151215', true );
+   wp_enqueue_script( 'gh-exam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+   wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/libs/bootstrap-sass/assets/javascripts/bootstrap.min.js', array(), '20151215', true );
+   wp_enqueue_script( 'slick', get_template_directory_uri() . 'libs/slick-carousel/slick/slick.min.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'gh-exam-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-	wp_enqueue_script( 'customJs', get_template_directory_uri() . '/js/custom.js', array(), '20151215', true );
+   wp_enqueue_script( 'gh-exam-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+   wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/custom.js', array(), '20151215', true );
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    wp_enqueue_script( 'comment-reply' );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'gh_exam_scripts' );
 
