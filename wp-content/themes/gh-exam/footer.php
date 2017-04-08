@@ -15,40 +15,38 @@
 </div><!-- #content -->
 
 <footer id="colophon" class="site-footer" role="contentinfo">
-	<div class="foot-carousel">
+	<?php
+	$query = new WP_Query( array('post_type' => 'company-slider', 'posts_per_page' => 100 ) );
+	if ($query->have_posts()):?>
+	<section class="home-partners">
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-3 col-lg3">
+		<h2 class="title"><?php echo get_theme_mod('company_title'); ?></h2>
+			<div class="row partners-slider">
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<div class="col-md-3 col-lg-3 partners-label">
+						<?php the_post_thumbnail('full', 'class=img-responsive'); ?>
+					</div>
+				<?php endwhile; ?>
+			</div>
+		</div>
+	</section>
+<?php endif; wp_reset_postdata(); ?>
 
-				</div>
+<div class="footer-logo-box">
+	<div class="container">
+		<a href="<?php the_permalink(); ?>"></a><?php the_custom_logo(); ?>
+	</div>
+</div>
+
+<div class="footer-copy-right">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg-12 copy-box">
+				<span class="copy-right"><?php echo get_theme_mod('copy_right'); ?></span>
 			</div>
 		</div>
 	</div>
-
-	<div class="contact">
-		<div class="container ">
-			<div class="row">
-				<div class="col-md-6 col-md-6"></div>
-				<div class="col-md-6 col-md-6"></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="footer-logo-box">
-		<div class="container">
-			<a href="<?php the_permalink(); ?>"></a><?php the_custom_logo(); ?>
-		</div>
-	</div>
-
-	<div class="footer-copy-right">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-lg-12 copy-box">
-					<span class="copy-right"><?php echo get_theme_mod('copy_right'); ?></span>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
 
 </footer><!-- #colophon -->
 </div><!-- #page -->

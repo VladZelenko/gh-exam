@@ -121,6 +121,38 @@ function gh_exam_customize_register( $wp_customize ) {
 	//copyright ont background - end
 
 	//copyright
+	$wp_customize->add_setting('company_title', array( 'default'=> ''));
+	$wp_customize->add_control(
+		'company_title',
+		array(
+			'label'    => __( 'Company title', 'gh-exam' ),
+			'section'  => 'title_tagline',
+			'settings' => 'company_title',
+			'type'     => 'text',
+			));
+	//copyright - end
+
+	//nav menu font color
+	$wp_customize->add_setting('comapany_font_color', array( 'default'=> ''));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'comapany_font_color', array(
+		'label'      => __( 'Company font color', 'gh-exam' ),
+		'section'    => 'colors',
+		'settings'   => 'comapany_font_color',
+		'priority'	 => 12,
+		)));
+	//nav menu font color - end
+
+	//nav menu font color
+	$wp_customize->add_setting('comapany_bg', array( 'default'=> ''));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'comapany_bg', array(
+		'label'      => __( 'Company background', 'gh-exam' ),
+		'section'    => 'colors',
+		'settings'   => 'comapany_bg',
+		'priority'	 => 13,
+		)));
+	//nav menu font color - end
+
+	//copyright
 	$wp_customize->add_setting('copy_right', array( 'default'=> ''));
 	$wp_customize->add_control(
 		'copy_right',
@@ -511,6 +543,19 @@ function gh_exam_customize_register( $wp_customize ) {
 		'settings'   => 'footer_bg',
 		'priority'	 => 2,
 		)));
+
+	//blog page header title
+	$wp_customize->add_setting('blog_header_title', array( 'default'=> ''));
+	$wp_customize->add_control(
+		'blog_header_title',
+		array(
+			'label'    => __( 'Blog title', 'gh-exam' ),
+			'section'  => 'header_section',
+			'settings' => 'blog_header_title',
+			'type'     => 'textarea',
+			'priority'	 => 3,
+			));
+	//blog page header title - end
 	//background footer - end
 	//
 	//
@@ -679,9 +724,11 @@ function mytheme_customize_css(){
 		.copy-right {color: <?php echo get_theme_mod('copy_right_color'); ?>;}
 		.site-footer .footer-copy-right {background-color: <?php echo get_theme_mod('copy_right_bg'); ?>;}
 		.site-footer .footer-logo-box {background-color: <?php echo get_theme_mod('footer_logo'); ?>;}
+		.home-partners {background-color: <?php echo get_theme_mod('comapany_bg'); ?>;}
+		.home-partners .title {color: <?php echo get_theme_mod('comapany_font_color'); ?>;}
 		/*-------------------------------------BLOG PANELS----------------------------------------------------------------------*/
 		.hero-blog-post {
-			background-image: url('<?php echo get_theme_mod('bg_image_header'); ?>') ;
+			background-image: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .9)), url('<?php echo get_theme_mod('bg_image_header'); ?>') ;
 			background-color: <?php echo get_theme_mod('header_bg'); ?>;
 			background-size: cover;
 			width: 100%;
@@ -732,21 +779,17 @@ function mytheme_customize_css(){
 			background-position: center;
 			background-repeat: no-repeat;
 		}
-		.hero-blog-post  {
+/*		.hero-blog-post  {
 			background-image: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .9)), url('<?php echo get_theme_mod(''); ?>') ;
 			background-color: <?php echo get_theme_mod(''); ?>;
 			background-size: cover;
 			width: 100%;
 			background-position: center;
 			background-repeat: no-repeat;
-		}
+		}*/
 		.pagination .page-numbers {
 			background-color: <?php echo get_theme_mod('bg_pagination'); ?>;
 			color: <?php echo get_theme_mod('pagination_color'); ?>;
-		}
-		{
-			color: <?php echo get_theme_mod('pagination_active_color'); ?>;
-			
 		}
 		/*-------------------------------------SINGLE POST PANELS----------------------------------------------------------------*/
 		.post blockquote {

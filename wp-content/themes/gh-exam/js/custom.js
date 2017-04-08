@@ -12,4 +12,38 @@ $(document).ready(function(){
 			menu.removeAttr('style');
 		}
 	});
+
+
+	$('.partners-slider').slick({
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		autoplay: true,
+		arrows: false,
+		responsive: [
+		{
+			breakpoint: 1000,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				infinite: true,
+				dots: true
+			}
+		},
+		{
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
+		]
+	});
 });

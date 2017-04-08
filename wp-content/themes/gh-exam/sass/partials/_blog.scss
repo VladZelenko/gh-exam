@@ -5,7 +5,10 @@
 .post {
 	margin-bottom: 25px;
 	border: 1px solid #aaaaab;
-	.title,	p {padding: 0 15px;}
+	.title,	p {
+		padding: 0 15px;
+		font-family: $primary_font;
+	}
 	footer a:hover {text-decoration: none;}
 	.fa {
 		font-size: 20px;
@@ -16,12 +19,14 @@
 	min-height: 40px;
 	text-align: center;
 	border-top: 1px solid #aaaaab;
+	font-family: $primary_font;
 	a {
 		line-height: 40px;
 	}
 }
 .posts-navigation {display: none;}
 .pagination {
+	margin-bottom: 70px;
 	.page-numbers {
 		margin-right: 15px;
 		display: inline-block;

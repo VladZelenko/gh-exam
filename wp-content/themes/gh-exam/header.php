@@ -46,7 +46,7 @@
 			</div>
 			<div class="hero-single-post hero-blog-post">
 				<div class="container">
-					<h2 class="single-title blog-title"><?php echo get_theme_mod('single_header_title'); ?></h2>
+					<h2 class="single-title blog-title"><?php echo get_theme_mod('blog_header_title'); ?></h2>
 				</div>
 			</div>
 		</header><!-- #masthead -->
