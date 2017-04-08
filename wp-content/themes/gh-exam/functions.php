@@ -143,6 +143,84 @@ function company_post_type() {
 }
 add_action( 'init', 'company_post_type' );
 
+
+//hero home
+function preview_post_type() {
+	$args = array(
+      'label' => 'Home preview',
+      'public' => true,
+      'show_ui' => true,
+      'capability_type' => 'post',
+      'hierarchical' => false,
+      'rewrite' => array('slug' => 'hero-home'),
+      'query_var' => true,
+      'supports' => array(
+      	'title',
+      	'editor',
+      	'excerpt',
+      	'trackbacks',
+      	'custom-fields',
+      	'comments',
+      	'revisions',
+      	'thumbnail',
+      	'author',
+      	'page-attributes',)
+      );
+	register_post_type( 'hero-home', $args );
+}
+add_action( 'init', 'preview_post_type' );
+
+
+function welcome_post_type() {
+    $args = array(
+      'label' => 'Welcome section',
+      'public' => true,
+      'show_ui' => true,
+      'capability_type' => 'post',
+      'hierarchical' => false,
+      'rewrite' => array('slug' => 'welcome'),
+      'query_var' => true,
+      'supports' => array(
+        'title',
+        'editor',
+        'excerpt',
+        'trackbacks',
+        'custom-fields',
+        'comments',
+        'revisions',
+        'thumbnail',
+        'author',
+        'page-attributes',)
+    );
+    register_post_type( 'welcome', $args );
+}
+add_action( 'init', 'welcome_post_type' );
+
+function service_post_type() {
+    $args = array(
+      'label' => 'Services section',
+      'public' => true,
+      'show_ui' => true,
+      'capability_type' => 'post',
+      'hierarchical' => false,
+      'rewrite' => array('slug' => 'services'),
+      'query_var' => true,
+      'supports' => array(
+        'title',
+        'editor',
+        'excerpt',
+        'trackbacks',
+        'custom-fields',
+        'comments',
+        'revisions',
+        'thumbnail',
+        'author',
+        'page-attributes',)
+    );
+    register_post_type( 'services', $args );
+}
+add_action( 'init', 'service_post_type' );
+
  /* Enqueue scripts and styles.
  */
 function gh_exam_scripts() {

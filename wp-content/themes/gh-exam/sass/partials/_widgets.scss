@@ -1,0 +1,36 @@
+.widget {
+	margin-bottom: 25px;
+	width: 100%;
+}
+.widget-title {
+	font: 700 30px $primary_font;
+	text-transform: uppercase;
+	margin-bottom: 35px;
+	text-align: center;
+}
+#searchform {
+	padding: 10px 30px 35px 30px;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+	input {
+		max-width: 305px;
+		min-width: 280px;
+		width: 100%;
+		height: 55px;
+		background: none;
+		border: 1px solid $additional_color;
+		padding-left: 20px;
+		color: #b2b2b2;
+		font: 700 18px #primary_font;
+	}
+}
+.widget_categories {
+	padding: 20px 0 80px 30px;
+	.widget-title {padding-bottom: 30px;}
+	a {
+		display: block;
+		margin-bottom: 25px;
+	}
+}

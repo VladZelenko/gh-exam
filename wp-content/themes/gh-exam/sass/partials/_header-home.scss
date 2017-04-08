@@ -1,0 +1,38 @@
+.home-hero {
+	padding: 100px 0 45px 0;
+	width: 100%;
+	min-height: 780px;
+	color: $additional_color;
+	background-color: #ff4848;
+	h2.title {font: 700 60px $primary_font;}
+	h3 {font: 400 48px $primary_font; margin-bottom: 0;}
+	ul li{
+		display: inline-block;
+		&:first-child {font: 400 30px $primary_font;}
+		&:last-child {font: 400 24px $primary_font;}
+	}
+	p {
+		padding-bottom: 45px;
+		font: 300 24px $primary_font;}
+	}
+	.welcome {
+		padding: 60px 0 0 0;
+		color: #004966;
+		.title {
+			margin-bottom: 50px;
+			font: 700 72px $primary_font;
+			text-transform: uppercase;
+		}
+		p {
+			color: #004966;
+			font: 300 18px/24px $primary_font;
+		}
+		i {
+			color: #ff4848;
+			font-weight: 700;
+		}
+	}
+	.services {
+		min-height: 725px;
+		background-color: #004966;
+	}

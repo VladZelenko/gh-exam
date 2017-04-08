@@ -515,7 +515,7 @@ function gh_exam_customize_register( $wp_customize ) {
 		) ) );
 	//background header image - end
 
-	//background footer
+	//background header
 	$wp_customize->add_setting('header_bg', array( 'default'=> ''));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_bg', array(
 		'label'      => __( 'Background-color', 'gh-exam' ),
@@ -523,7 +523,7 @@ function gh_exam_customize_register( $wp_customize ) {
 		'settings'   => 'header_bg',
 		'priority'	 => 2,
 		)));
-	//background footer - end
+	//background header - end
 
 	//footer background image footer
 	$wp_customize->add_setting('bg_image_footer', array( 'default'=> ''));
@@ -556,7 +556,7 @@ function gh_exam_customize_register( $wp_customize ) {
 			'priority'	 => 3,
 			));
 	//blog page header title - end
-	//background footer - end
+
 	//
 	//
 	//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -779,14 +779,14 @@ function mytheme_customize_css(){
 			background-position: center;
 			background-repeat: no-repeat;
 		}
-/*		.hero-blog-post  {
-			background-image: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .9)), url('<?php echo get_theme_mod(''); ?>') ;
-			background-color: <?php echo get_theme_mod(''); ?>;
+		.site-footer .contact  {
+			background-image: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .9)), url('<?php echo get_theme_mod('bg_image_footer'); ?>') ;
+			background-color: <?php echo get_theme_mod('footer_bg'); ?>;
 			background-size: cover;
 			width: 100%;
 			background-position: center;
 			background-repeat: no-repeat;
-		}*/
+		}
 		.pagination .page-numbers {
 			background-color: <?php echo get_theme_mod('bg_pagination'); ?>;
 			color: <?php echo get_theme_mod('pagination_color'); ?>;
