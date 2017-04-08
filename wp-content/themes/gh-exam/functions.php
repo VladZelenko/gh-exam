@@ -104,7 +104,6 @@ function gh_exam_widgets_init() {
 }
 add_action( 'widgets_init', 'gh_exam_widgets_init' );
 
-add_action( 'init', 'slider_post_type' );
 //lenght paragraph posts
 function new_excerpt_length($length) {
   return 60;
