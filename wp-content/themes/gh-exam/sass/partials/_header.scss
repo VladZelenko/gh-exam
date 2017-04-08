@@ -1,0 +1,44 @@
+.head-nav-menu {
+	width: 100%;
+	box-shadow: 3px 1px 3px #000000;
+	.logo {
+		margin-top: 15px;
+		float: left;
+	}
+	.head-menu {float: right}
+}
+
+//header nav menu
+.nav {
+	min-height: 90px;
+	display: flex;
+	align-items: center;
+}
+.nav li a,
+#touch-menu {
+	display: block;
+	padding: 10px 20px;
+	color: $secondary_font_color;
+	font: 700 14px/24px $primary_font;
+	text-transform: uppercase;
+}
+.nav li a:hover, #touch-menu:hover, .nav li:hover {
+	color: $accent_color;
+	text-decoration: none;
+	background-color: transparent;
+	transition: all .3s ease-in-out;
+}
+#touch-menu {display: none;}
+//single post hero
+.hero-single-post {
+	width: 100%;
+	background-color: #ccc;
+	.container {
+		width: 100%;
+		min-height: 210px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+.hero-single-post, .hero-blog-post {margin-bottom: 70px;}

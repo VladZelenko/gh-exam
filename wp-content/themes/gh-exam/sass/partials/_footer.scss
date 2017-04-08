@@ -1,0 +1,28 @@
+.site-footer {
+	width: 100%;
+	.contact {
+		min-height: 765px;
+	}
+}
+.footer-logo-box {
+	width: 100%;
+	.container {
+		min-height: 225px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+.footer-copy-right {
+	width: 100%;
+	.copy-box {
+		min-height: 75px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.copy-right {
+		display: block;
+		font: 300 18px $primary_font;
+	}
+}
